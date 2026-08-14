@@ -1,0 +1,48 @@
+def limpar_e_ordenar_misto(lista_dados):
+    dados_limpos = [item.strip() for item in lista_dados if item.strip()]
+    
+    numeros_unicos = set()
+    textos_unicos = set()
+    
+    for d in dados_limpos:
+        try:
+            if "." in d:
+                numeros_unicos.add(float(d))
+            else:
+                numeros_unicos.add(int(d))
+        except ValueError:
+            textos_unicos.add(d.title())
+            
+    numeros_ordenados = sorted(list(numeros_unicos))
+    textos_ordenados = sorted(list(textos_unicos))
+    
+    return numeros_ordenados, textos_ordenados
+
+def main():
+    print("=== PROGRAMA MISTO: NÚMEROS OU NOMES SEM DUPLICATAS ===")
+    
+    while True:
+        entrada = input("\nDigite números ou nomes misturados separados por vírgula: ").strip()
+        
+        if not entrada:
+            print("Entrada vazia. Por favor, digite pelo menos um item.")
+            continue
+            
+        lista_suja = entrada.split(",")
+        
+        numeros_limpos, nomes_limpos = limpar_e_ordenar_misto(lista_suja)
+        
+        print("\n" + "=" * 50)
+        print("RESULTADO DO PROCESSAMENTO MISTO:")
+        print(f"• Lista original: {[i.strip() for i in lista_suja]}")
+        print(f"• Números limpos e em ordem crescente: {numeros_limpos}")
+        print(f"• Nomes limpos e em ordem alfabética: {nomes_limpos}")
+        print("=" * 50)
+        
+        continuar = input("\nDeseja processar outra lista? (s/n): ").strip().lower()
+        if continuar not in ["s", "sim"]:
+            print("Encerrando o programa. Até logo!")
+            break
+
+if __name__ == "__main__":
+    main()
