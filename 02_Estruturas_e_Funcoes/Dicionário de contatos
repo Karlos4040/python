@@ -1,0 +1,61 @@
+from py_compile import main
+
+
+agenda = {}
+def adicionar_contato(nome, telefone):
+    agenda[nome] = telefone
+    print(f"Contato {nome} adicionado com sucesso.")
+
+def listar_contatos():
+    if agenda:
+        print("Lista de Contatos:")
+        for nome, telefone in agenda.items():
+            print(f"Nome: {nome}, Telefone: {telefone}")
+    else:
+        print("Nenhum contato cadastrado.")
+
+def remover_contato(nome):
+    if nome in agenda:
+        del agenda[nome]
+        print(f"Contato {nome} removido com sucesso.")
+    else:
+        print(f"Contato {nome} não encontrado.")
+
+
+while True:
+
+    print("\n" + "-" * 30)
+    print("Gerenciador de Contatos")
+    print("1. Adicionar Contato")
+    print("2. Listar Contatos")
+    print("3. Remover Contato")
+    print("4. Sair")
+    print("-" * 30)
+    opcao = input("Escolha uma opção: ")
+
+    if opcao == "1":
+        print("-" * 30)
+        nome = input("Digite o nome do contato: ")
+        telefone = input("Digite o telefone do contato: ")
+        adicionar_contato(nome, telefone)
+
+    elif opcao == "2":
+        print("\n" + "-" * 30)
+        listar_contatos()
+
+    elif opcao == "3":
+        print("\n" + "-" * 30)
+        nome = input("Digite o nome do contato que deseja remover: ")
+        remover_contato(nome)
+
+    elif opcao == "4":
+        print("\n" + "-" * 30)
+        print("Saindo do gerenciador de contatos.")
+        break
+
+    else:
+        print("\n" + "-" * 30)
+        print("Opção inválida. Tente novamente.")
+
+if __name__ == "__main__":
+        main()
