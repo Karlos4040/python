@@ -1,3 +1,6 @@
+from random import randint
+
+
 jogar_novamente = True
 
 while jogar_novamente:
