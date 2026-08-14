@@ -1,0 +1,51 @@
+tarefas = []
+
+while True:
+
+    print("\n" + "-" * 30)
+    print("Gerenciador de Tarefas Simples")
+    print("1. Adicionar Tarefa")
+    print("2. Listar Tarefas")
+    print("3. Remover Tarefa")
+    print("4. Sair")
+    print("-" * 30)
+    opcao = input("Escolha uma opção: ")
+
+    if opcao == "1":
+        print("-" * 30)
+        tarefa = input("Digite a tarefa: ")
+        tarefas.append(tarefa)
+        print("Tarefa adicionada com sucesso!")
+
+    elif opcao == "2":
+        print("\n" + "-" * 30)
+        if tarefas:
+            print("Lista de Tarefas:")
+            for i, tarefa in enumerate(tarefas, start=1):
+                print(f"{i}. {tarefa}")
+        else:
+            print("Nenhuma tarefa cadastrada.")
+
+    elif opcao == "3":
+        print("\n" + "-" * 30)
+        if tarefas:
+            print("Lista de Tarefas:")
+            for i, tarefa in enumerate(tarefas, start=1):
+                print(f"{i}. {tarefa}")
+            indice = int(input("Digite o número da tarefa que deseja remover: ")) - 1
+            if 0 <= indice < len(tarefas):
+                tarefas.pop(indice)
+                print("Tarefa removida com sucesso!")
+            else:
+                print("Número de tarefa inválido.")
+        else:
+            print("Nenhuma tarefa cadastrada.")
+
+    elif opcao == "4":
+        print("\n" + "-" * 30)
+        print("Saindo do gerenciador de tarefas.")
+        break
+
+    else:
+        print("\n" + "-" * 30)
+        print("Opção inválida. Tente novamente.")
