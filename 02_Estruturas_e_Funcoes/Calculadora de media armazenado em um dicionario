@@ -1,0 +1,31 @@
+alunos = {
+    "Pedro": [8.0, 9.0, 5.0, 7.0],
+    "Maria": [9.0, 8.0, 10.0, 9.0],
+    "João": [6.0, 7.0, 8.0, 5.0],
+    "Ana": [10.0, 9.0, 8.0, 9.0]
+}
+
+def calcular_media_aluno(dicionario, nome_aluno):
+    if nome_aluno in dicionario:
+        notas = dicionario[nome_aluno]
+        media = sum(notas) / len(notas)
+        return media
+    else:
+        return None
+
+if __name__ == "__main__":
+    while True:
+        while True:
+    
+         nome = input("Digite o nome do aluno: ")
+         media = calcular_media_aluno(alunos, nome)
+
+         if media is not None:
+            print(f"A média de {nome} é: {media:.2f}")
+            break
+         else:
+            print(f"Aluno {nome} não encontrado.")  
+
+        continue_prompt = input("Deseja calcular a média de outro aluno? (s/n): ")
+        if continue_prompt not in ["s", "S", "sim", "Sim"]:
+             break
