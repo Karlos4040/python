@@ -1,0 +1,26 @@
+def contar_frequencia_palavras(texto):
+    # Remove pontuação e converte para minúsculas
+    texto = texto.lower()
+    for char in '.,!?;:"()[]{}':
+        texto = texto.replace(char, '')
+
+    palavras = texto.split()   
+    
+    frequencia = {}
+    
+    for palavra in palavras:
+        if palavra in frequencia:
+            frequencia[palavra] += 1
+        else:
+            frequencia[palavra] = 1
+            
+    return frequencia
+
+print("Digite um texto:")
+texto_usuario = input()
+frequencia_palavras = contar_frequencia_palavras(texto_usuario)
+
+print("Frequência de palavras:")
+for palavra, frequencia in frequencia_palavras.items():
+    print(f"{palavra}: {frequencia}")
+
